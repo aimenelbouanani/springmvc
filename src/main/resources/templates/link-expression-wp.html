@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Link Expressions With Parameter</title>
+</head>
+<body>
+<h1>Link Expression With ParameterExample:</h1>
+<ul>
+    <li><a th:href="@{/url-destination/{p1}/{p2}(p1=${id1}, p2=${id2})}">link
+        expression with parameter</a></li>
+</ul>
+</body>
+</html>

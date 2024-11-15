@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>If Unless Attributes</title>
+    <!-- Bootstrap CSS v3.4.1 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Custom styles */
+        table {
+            margin-top: 20px;
+            border: 1px solid #dee2e6;
+        }
+
+        th, td {
+            text-align: center;
+        }
+
+        .action-link {
+            margin-right: 10px;
+            text-decoration: none;
+        }
+
+        .action-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container mt-3">
+    <h2>If Unless Attributes Example</h2>
+    <table class="table table-striped table-bordered">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Gender</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.name}"></td>
+            <td th:text="${user.email}"></td>
+            <td th:text="${user.role}"></td>
+            <td th:text="${user.gender}"></td>
+            <td>
+                <!-- Actions for ADMIN -->
+                <div th:if="${user.role} == 'ADMIN'">
+                    <a th:href="@{/update}" class="btn btn-primary btn-sm action-link">Update</a>
+                    <a th:href="@{/delete}" class="btn btn-danger btn-sm action-link">Delete</a>
+                    <a th:href="@{/view}" class="btn btn-success btn-sm action-link">View</a>
+                </div>
+                <!-- Action for normal users -->
+                <div th:unless="${user.role} == 'ADMIN'">
+                    <a th:href="@{/view}" class="btn btn-info btn-sm action-link">View</a>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registered Product Information</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="text-center">Product Information</h1>
+    <div class="border rounded p-4 mt-4 shadow">
+        <p>ID Produit: <strong th:text="${userForm.id}"></strong></p>
+        <p>Désignation: <strong th:text="${userForm.designation}"></strong></p>
+        <p>Prix Unitaire: <strong th:text="${userForm.prixUnitaire}"></strong></p>
+        <p>Quantité: <strong th:text="${userForm.quantite}"></strong></p>
+        <p>Catégorie: <strong th:text="${userForm.categorie}"></strong></p>
+        <p>Description: <strong th:text="${userForm.description}"></strong></p>
+        <p>Origine: <strong th:text="${userForm.origine}"></strong></p>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

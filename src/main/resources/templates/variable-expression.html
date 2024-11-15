@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Variable Expression Example1</title>
+</head>
+<body>
+<!--<h1>Variable Expression : Informations sur user:</h1>-->
+<!--<div>-->
+<!--    <p th:text = " 'Name : ' + ${user.name}"></p>-->
+<!--    <p> Email : <strong th:text="${user.email}"></strong></p>-->
+<!--    <p th:text = " 'Role : ' + ${user.role}"></p>-->
+<!--    <p>Gender: <span th:text = "${user.gender}"></span></p>-->
+<!--</div>-->
+
+<h1>Selection Expression : Informations sur user:</h1>
+<div th:object="${user}">
+    <p th:text = "'Name : ' + *{name}"></p>
+    <p> Email : <strong th:text="*{email}"></strong></p>
+    <p th:text = "'Role : ' + *{role}"></p>
+    <p>Gender: <span th:text = "*{gender}"></span></p>
+</div>
+</body>
+</html>
