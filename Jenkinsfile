@@ -1,10 +1,12 @@
 pipeline {
     agent any  // Spécifie que le pipeline peut s'exécuter sur n'importe quel agent disponible
 
+    tools {
+        maven 'Maven_3.8.7'  // Utilise l'installation de Maven configurée dans Jenkins
+    }
+
     environment {
-        // Définir des variables d'environnement globales si nécessaire
-        JAVA_HOME = '/usr/lib/jvm/java-17-openjdk-amd64'
-        MAVEN_HOME = '/opt/maven'
+        JAVA_HOME = '/usr/lib/jvm/java-17-openjdk-amd64'  // Définir le chemin du JDK
     }
 
     stages {
@@ -29,7 +31,8 @@ pipeline {
             steps {
                 // Installer les dépendances avec Maven
                 script {
-                    sh '${MAVEN_HOME}/bin/mvn clean install'
+                    // Utiliser Maven depuis Jenkins sans spécifier le chemin complet
+                    sh 'mvn clean install'
                 }
             }
         }
@@ -39,7 +42,7 @@ pipeline {
                 // Exécuter les tests Maven
                 script {
                     // Lancer les tests avec Maven et générer les rapports
-                    sh '${MAVEN_HOME}/bin/mvn test'
+                    sh 'mvn test'
                 }
             }
         }
