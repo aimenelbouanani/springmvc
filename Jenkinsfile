@@ -2,7 +2,7 @@ pipeline {
     agent any  // Spécifie que le pipeline peut s'exécuter sur n'importe quel agent disponible
 
     tools {
-        maven 'Maven_3.8.7'  // Utilise l'installation de Maven configurée dans Jenkins
+        maven 'Maven 3.8.7'  // Assurez-vous que le nom correspond exactement à celui configuré dans Jenkins
     }
 
     environment {
@@ -13,15 +13,14 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Cette étape vérifie le code depuis le repository
-                git 'https://github.com/aimenelbouanani/springmvc.git'  // Remplacez avec l'URL de votre repository
+                git 'https://github.com/aimenelbouanani/springmvc.git'
             }
         }
 
         stage('Setup JDK') {
             steps {
-                // Étape de configuration du JDK
+                // Vérifiez la version du JDK
                 script {
-                    // Assurez-vous que le JDK 17 est installé sur le serveur Jenkins
                     sh 'java -version'
                 }
             }
@@ -31,7 +30,6 @@ pipeline {
             steps {
                 // Installer les dépendances avec Maven
                 script {
-                    // Utiliser Maven depuis Jenkins sans spécifier le chemin complet
                     sh 'mvn clean install'
                 }
             }
@@ -39,9 +37,8 @@ pipeline {
 
         stage('Run Tests') {
             steps {
-                // Exécuter les tests Maven
+                // Exécuter les tests avec Maven
                 script {
-                    // Lancer les tests avec Maven et générer les rapports
                     sh 'mvn test'
                 }
             }
@@ -63,10 +60,10 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                // Si tout est ok, on déploie l'application
+                // Déployer l'application
                 script {
                     sh 'echo "Deploying Application"'
-                    // Vous pouvez mettre ici la commande réelle de déploiement
+                    // Commande réelle de déploiement ici
                 }
             }
         }
